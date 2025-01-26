@@ -5,12 +5,17 @@
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<script setup>
+import { onMounted } from 'vue'
+import axios from 'axios'
+onMounted(async () => {
+  axios
+    .get('http://127.0.0.1:8000/api/test')
+    .then((response) => {
+      console.log('Data:', response.data)
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error)
+    })
+})
+</script>
