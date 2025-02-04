@@ -6,7 +6,7 @@ import Aura from '@primevue/themes/aura';
 import './assets/main.css'
 const app = createApp(App)
 import { definePreset } from '@primevue/themes';
-
+import 'primeicons/primeicons.css';
 app.use(router)
 
 const MyPreset = definePreset(Aura, {
@@ -54,4 +54,3 @@ app.use(PrimeVue, {
   }
 });
 app.mount('#app')
-  
