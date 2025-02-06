@@ -4,59 +4,29 @@ export function useApi() {
   const apiUrl = import.meta.env.VITE_API_BASE_URL
 
   return {
-    get(api) {
-      axios
-        .get(`${apiUrl}${api}`)
-        .then((response) => {
-          return response
-        })
-        .catch((error) => {
-          return error
-        })
+    async get(api) {
+      const response = await axios.get(`${apiUrl}${api}`)
+      return response.data;
     },
 
-    post(api, data) {
-      axios
-        .post(`${apiUrl}${api}`, data)
-        .then((response) => {
-          return response
-        })
-        .catch((error) => {
-          return error
-        })
+    async post(api, data) {
+      const response = await axios.post(`${apiUrl}${api}`, data);
+      return response.data;
     },
 
-    put(api, data) {
-      axios
-        .put(`${apiUrl}${api}`, data)
-        .then((response) => {
-          return response
-        })
-        .catch((error) => {
-          return error
-        })
+    async put(api, data) {
+      const response = await axios.put(`${apiUrl}${api}`, data);
+      return response.data;
     },
 
-    patch(api, data) {
-      axios
-        .patch(`${apiUrl}${api}`, data)
-        .then((response) => {
-          return response
-        })
-        .catch((error) => {
-          return error
-        })
+    async patch(api, data) {
+      const response = axios.patch(`${apiUrl}${api}`, data);
+      return response.data;
     },
 
-    delete(api, data) {
-      axios
-        .delete(`${apiUrl}${api}`, data)
-        .then((response) => {
-          return response
-        })
-        .catch((error) => {
-          return error
-        })
+    async delete(api, data) {
+      const response = await axios.delete(`${apiUrl}${api}`, data);
+      return response.data;
     },
   }
 }

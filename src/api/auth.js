@@ -4,8 +4,13 @@ export function useAuth() {
   const api = useApi();
   return {
     async login() {
-        const data = api.get('/login'); 
-        return data; 
+      try {
+        const data = await api.get('/login');
+        return data;
+      } catch (error) {
+        console.error(error);
+        return null;
+      }
     },
   };
 }
