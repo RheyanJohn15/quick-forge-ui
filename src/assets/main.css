@@ -14,3 +14,22 @@
 .p-steppanel{
   background-color: #fff !important;
 }
+.p-accordioncontent-content{
+  background: #fff !important;
+  color: #000 !important;
+}
+
+.p-accordionheader{
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.p-accordionheader-toggle-icon{
+  color: #000 !important;
+}
+
+.p-panel-content-container{
+  background-color: #fff !important;
+  color: #000;
+  border-radius: 0.3rem;
+}
