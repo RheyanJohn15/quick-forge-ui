@@ -19,9 +19,9 @@
 import { ref } from "vue";
 
 const items = ref([
-    { route: '/dashboard', label: 'Dashboard', icon: 'pi pi-home' },
-    { route: '/transactions', label: 'Transactions', icon: 'pi pi-chart-line' },
-    { route: '/products', label: 'Products', icon: 'pi pi-list' },
-    { route: '/messages', label: 'Messages', icon: 'pi pi-inbox' }
+    { route: '/project-content/:id', label: 'Project Details', icon: 'pi pi-folder-open' },
+    { route: '/transactions', label: 'Settings', icon: 'pi pi-cog' },
+    { route: '/products', label: 'Manage Team', icon: 'pi pi-users' },
+    { route: '/', label: 'Return Home', icon: 'pi pi-home' }
 ]);
 </script>
