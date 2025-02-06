@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'axios';
+
 export function useApi() {
   const apiUrl = import.meta.env.VITE_API_BASE_URL
 
@@ -7,7 +8,7 @@ export function useApi() {
       axios
         .get(`${apiUrl}${api}`)
         .then((response) => {
-          return response.data
+          return response
         })
         .catch((error) => {
           return error
@@ -18,7 +19,7 @@ export function useApi() {
       axios
         .post(`${apiUrl}${api}`, data)
         .then((response) => {
-          return response.data
+          return response
         })
         .catch((error) => {
           return error
@@ -29,7 +30,7 @@ export function useApi() {
       axios
         .put(`${apiUrl}${api}`, data)
         .then((response) => {
-          return response.data
+          return response
         })
         .catch((error) => {
           return error
@@ -40,7 +41,7 @@ export function useApi() {
       axios
         .patch(`${apiUrl}${api}`, data)
         .then((response) => {
-          return response.data
+          return response
         })
         .catch((error) => {
           return error
@@ -51,7 +52,7 @@ export function useApi() {
       axios
         .delete(`${apiUrl}${api}`, data)
         .then((response) => {
-          return response.data
+          return response
         })
         .catch((error) => {
           return error
@@ -59,3 +60,6 @@ export function useApi() {
     },
   }
 }
+
+
+

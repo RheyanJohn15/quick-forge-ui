@@ -22,11 +22,18 @@
           </Message>
         </div>
         <Divider />
-        <Button label="Login" />
+        <Button @click="login" label="Login" />
       </div>
     </div>
   </main>
 </template>
 <script setup>
 import { ref } from "vue";
+import { useAuth } from "@/api/auth.js";
+const auth = useAuth(); 
+
+async function login() {
+  const res = await auth.login();
+  console.log(res);
+}
 </script>
