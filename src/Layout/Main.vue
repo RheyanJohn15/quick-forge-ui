@@ -40,6 +40,10 @@ const items = ref([
     {
         label: 'Settings',
         icon: 'pi pi-cog'
+    },
+    {
+        label: 'Admin Management',
+        icon: 'pi pi-user-plus'
     }
 ]);
 </script>
