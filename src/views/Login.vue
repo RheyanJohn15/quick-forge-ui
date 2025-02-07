@@ -11,18 +11,18 @@
       <div class="flex flex-col mt-8 gap-4 w-full">
         <div class="flex flex-col gap-2">
           <label for="username">Username</label>
-          <InputText id="username" placeholder="admin" v-model="value" aria-describedby="username-help" />
+          <InputText id="username" placeholder="admin" v-model="email" aria-describedby="username-help" />
           <Message v-if="false" size="small" severity="error" variant="simple">You must enter a username
           </Message>
         </div>
         <div class="flex flex-col gap-2">
           <label for="password">Password</label>
-          <InputText id="password" placeholder="*********" v-model="value" aria-describedby="password-help" />
+          <InputText id="password" v-model="password" placeholder="*********" aria-describedby="password-help" />
           <Message v-if="false" size="small" severity="error" variant="simple">Enter your username to reset your password.
           </Message>
         </div>
         <Divider />
-        <Button @click="login" label="Login" />
+        <Button @click="login" :loading="loginLoading" label="Login" />
       </div>
     </div>
   </main>
@@ -30,10 +30,33 @@
 <script setup>
 import { ref } from "vue";
 import { useAuth } from "@/api/auth.js";
-const auth = useAuth(); 
+import { useRouter } from "vue-router";
+import { E } from "vitest/dist/chunks/reporters.0x019-V2";
+
+const auth = useAuth();
+
+const router = useRouter();
+
+const loginLoading = ref(false);
+const email = ref('');
+const password = ref('');
 
 async function login() {
-  const res = await auth.login();
-  console.log(res);
+  loginLoading.value = true;
+  const data = {
+    'email' : email.value,
+    'password': password.value
+  }
+
+  const res = await auth.login(data);
+
+  loginLoading.value = false;
+
+  if(res.success){
+    localStorage.setItem('api_token', res.data.api_token);
+    router.push('/');
+  }else{
+    
+  }
 }
 </script>
