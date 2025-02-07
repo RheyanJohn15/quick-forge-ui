@@ -44,6 +44,7 @@ const password = ref('');
 
 async function login() {
   loginLoading.value = true;
+  
   const data = {
     'email' : email.value,
     'password': password.value
