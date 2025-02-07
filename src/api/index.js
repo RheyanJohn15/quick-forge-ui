@@ -6,7 +6,6 @@ export function useApi() {
   const apiToken = localStorage.getItem('api_token') ?? null;
 
   const headers = (auth) => {
-
     return {
       headers: auth ? {
          Authorization: `Bearer ${apiToken}`,
@@ -34,7 +33,7 @@ export function useApi() {
     },
 
     async patch(api, data, auth = true) {
-      const response = axios.patch(`${apiUrl}${api}`, data, headers(auth));
+      const response =  await axios.patch(`${apiUrl}${api}`, data, headers(auth));
       return response.data;
     },
 
