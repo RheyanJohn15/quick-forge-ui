@@ -31,7 +31,7 @@
 import { ref } from "vue";
 import { useAuth } from "@/api/auth.js";
 import { useRouter } from "vue-router";
-import { E } from "vitest/dist/chunks/reporters.0x019-V2";
+import { notify } from "@/utils/notif.js";
 
 const auth = useAuth();
 
@@ -56,7 +56,7 @@ async function login() {
     localStorage.setItem('api_token', res.data.api_token);
     router.push('/');
   }else{
-    
+    notify(res);
   }
 }
 </script>

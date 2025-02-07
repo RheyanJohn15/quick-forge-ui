@@ -43,6 +43,7 @@ declare module 'vue' {
     Tabs: typeof import('primevue/tabs')['default']
     Textarea: typeof import('primevue/textarea')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
+    Toast: typeof import('primevue/toast')['default']
     Toolbar: typeof import('primevue/toolbar')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }

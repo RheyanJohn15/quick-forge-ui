@@ -3,12 +3,18 @@ import App from './App.vue'
 import router from './router'
 import PrimeVue from 'primevue/config';
 import Aura from '@primevue/themes/aura';
+import { definePreset } from '@primevue/themes';
+import ToastService from 'primevue/toastservice';
+
+import 'primeicons/primeicons.css';
 import './assets/main.css';
 import '@/assets/styles.scss';
-const app = createApp(App)
-import { definePreset } from '@primevue/themes';
-import 'primeicons/primeicons.css';
-app.use(router)
+
+const app = createApp(App);
+
+
+app.use(router);
+app.use(ToastService);
 
 const MyPreset = definePreset(Aura, {
   semantic: {
@@ -54,4 +60,5 @@ app.use(PrimeVue, {
       preset: MyPreset
   }
 });
-app.mount('#app')
+
+app.mount('#app');
