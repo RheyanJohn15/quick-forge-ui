@@ -32,9 +32,10 @@ import { ref } from "vue";
 import { useAuth } from "@/api/auth.js";
 import { useRouter } from "vue-router";
 import { notify } from "@/utils/notif.js";
+import { useToast } from 'primevue/usetoast';
 
 const auth = useAuth();
-
+const toast = useToast();
 const router = useRouter();
 
 const loginLoading = ref(false);
@@ -51,12 +52,12 @@ async function login() {
   const res = await auth.login(data);
 
   loginLoading.value = false;
-
+  console.log(res);
   if(res.success){
     localStorage.setItem('api_token', res.data.api_token);
     router.push('/');
   }else{
-    notify(res);
+    notify(res, toast);
   }
 }
 </script>
