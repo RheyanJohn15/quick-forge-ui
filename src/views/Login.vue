@@ -11,13 +11,13 @@
       <div class="flex flex-col mt-8 gap-4 w-full">
         <div class="flex flex-col gap-2">
           <label for="username">Username</label>
-          <InputText id="username" placeholder="admin" v-model="email" aria-describedby="username-help" />
+          <InputText id="username" placeholder="admin" type="email" v-model="email" aria-describedby="username-help" />
           <Message v-if="false" size="small" severity="error" variant="simple">You must enter a username
           </Message>
         </div>
         <div class="flex flex-col gap-2">
           <label for="password">Password</label>
-          <InputText id="password" v-model="password" placeholder="*********" aria-describedby="password-help" />
+          <InputText id="password" v-model="password" type="password" placeholder="*********" aria-describedby="password-help" />
           <Message v-if="false" size="small" severity="error" variant="simple">Enter your username to reset your password.
           </Message>
         </div>
@@ -44,7 +44,7 @@ const password = ref('');
 
 async function login() {
   loginLoading.value = true;
-  
+
   const data = {
     'email' : email.value,
     'password': password.value
@@ -53,9 +53,8 @@ async function login() {
   const res = await auth.login(data);
 
   loginLoading.value = false;
-  console.log(res);
   if(res.success){
-    localStorage.setItem('api_token', res.data.api_token);
+    localStorage.setItem('api_token', res.result.api_token);
     router.push('/');
   }else{
     notify(res, toast);
