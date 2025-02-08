@@ -49,8 +49,8 @@
         cols="30" />
     </div>
     <div class="flex justify-end gap-2">
-      <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>
-      <Button type="button" label="Add" @click="visible = false"></Button>
+      <Button type="button" label="Cancel" severity="secondary" @click="showAddProject = false"></Button>
+      <Button type="button" label="Add" @click="addProject"></Button>
     </div>
   </Dialog>
 
@@ -61,4 +61,11 @@
 import { ref } from "vue";
 
 const showAddProject = ref(false);
+
+const name = ref('');
+const description = ref('');
+
+function addProject(){
+
+}
 </script>
