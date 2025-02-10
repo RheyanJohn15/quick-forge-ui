@@ -7,7 +7,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'home',
-      component: () => import('../views/Login.vue'),
+      component: () => import('../views/LoginPage.vue'),
     },
 
     {
@@ -30,7 +30,7 @@ const router = createRouter({
       {
         path: '/',
         name: 'admin',
-        component: () => import("@/views/Dashboard/Index.vue"),
+        component: () => import("@/views/Dashboard/IndexContent.vue"),
       },
     ]
    }
