@@ -2,7 +2,7 @@
   <div class="w-full flex justify-end gap-4 px-8 py-4 bg-white">
     <Button @click="showAddProject = !showAddProject" label="Add Project" icon="pi pi-plus" />
     <FloatLabel class="w-full md:w-56" variant="in">
-    <Select v-model="value2" inputId="in_label" :options="cities" optionLabel="name" class="w-full" variant="filled" />
+    <Select v-model="workspaceList" inputId="in_label" :options="workspaceList" optionLabel="ws_name" class="w-full" variant="filled" />
     <label for="in_label">Workspaces</label>
 </FloatLabel>
   </div>
@@ -72,6 +72,7 @@ const description = ref('');
 const addProjectLoading = ref(false);
 
 const projectList = ref([]);
+const workspaceList = ref([]);
 
 async function addProject(){
   addProjectLoading.value = true;
@@ -95,7 +96,14 @@ async function addProject(){
 
 onMounted(()=> {
   loadProjects();
+  loadWorkspace();
 });
+
+async function loadWorkspace(){
+  const res = await projApi.workspace();
+  console.log(res);
+  workspaceList.value = res.result;
+}
 
 async function loadProjects(){
   const res = await projApi.list();

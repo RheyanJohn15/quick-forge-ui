@@ -8,7 +8,7 @@ import ToastService from 'primevue/toastservice';
 
 import 'primeicons/primeicons.css';
 import './assets/main.css';
-// import '@/assets/styles.scss';
+import '@/assets/styles.scss';
 
 const app = createApp(App);
 

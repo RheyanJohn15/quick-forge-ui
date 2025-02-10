@@ -10,7 +10,12 @@ export function projectApi() {
 
     async list(){
       const data = await api.get('/projects/list');
-      return data;  
+      return data;
+    },
+
+    async workspace(){
+      const data = await api.get('/projects/workspaces');
+      return data;
     }
   };
 }
