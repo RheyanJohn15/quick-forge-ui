@@ -6,7 +6,42 @@
     <label for="in_label">Workspaces</label>
 </FloatLabel>
   </div>
-  <div class="w-full grid grid-cols-5 gap-4 p-8 bg-white ">
+<div class="p-8">
+  <DataTable :value="projectList" paginator :rows="5" :rowsPerPageOptions="[5, 10, 20, 50]" tableStyle="min-width: 50rem"
+        paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
+        currentPageReportTemplate="{first} to {last} of {totalRecords}">
+    <template #paginatorstart>
+        <Button type="button" icon="pi pi-refresh" text />
+    </template>
+    <template #paginatorend>
+        <Button type="button" icon="pi pi-download" text />
+    </template>
+
+    <template #header>
+      <h1 class="text-xl">Project List</h1>
+    </template>
+
+    <Column field="project_logo" header="Logo" style="width: 25%">
+    <template #body="{ data }">
+
+      <Image src="/1.png" alt="Image" width="50" preview />
+
+    </template>
+    </Column>
+    <Column field="project_name" header="Project Name" style="width: 25%"></Column>
+    <Column field="project_description" header="Description" style="width: 25%"></Column>
+    <Column field="proj_id" header="Action" style="width: 25%">
+      <template #body="{ data }">
+        <div class="flex gap-2">
+          <Button @click="openProject(data.proj_id)" icon="pi pi-eye" />
+          <Button icon="pi pi-trash" severity="danger" />
+        </div>
+      </template>
+    </Column>
+</DataTable>
+
+</div>
+  <!-- <div class="w-full grid grid-cols-5 gap-4 p-8 bg-white ">
     <article v-for="project in projectList" :key="project.proj_id"
       class="group h-[25rem] overflow-hidden rounded-lg border-2 border-gray-200 relative border-opacity-60 shadow-lg">
       <img
@@ -35,7 +70,7 @@
       </div>
     </article>
 
-  </div>
+  </div> -->
 
   <Dialog v-model:visible="showAddProject" modal header="Add Project" class="w-1/3">
     <span class="text-surface-500 dark:text-surface-400 block mb-8">Start your boiler plate project from here.</span>
@@ -62,10 +97,12 @@ import { ref, onMounted } from "vue";
 import { projectApi } from "@/api/project-api";
 import { notify } from "@/utils/notif";
 import { useToast } from 'primevue/usetoast';
+import { useRouter } from "vue-router";
 
 const showAddProject = ref(false);
 const projApi = projectApi();
 const toast = useToast();
+const router = useRouter();
 
 const name = ref('');
 const description = ref('');
@@ -108,6 +145,10 @@ async function loadWorkspace(){
 async function loadProjects(){
   const res = await projApi.list();
   projectList.value = res.result;
+}
+
+function openProject(id){
+  router.push(`/project-content/${id}`);
 }
 
 </script>
